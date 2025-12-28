@@ -1,0 +1,146 @@
+/* 🌸 Pico v2 Theme: Strawberry Milk (Light) + Berry (Dark) 🌸 */
+
+/* -------------------------------------------
+   1) Brand tokens (apply to BOTH themes)
+------------------------------------------- */
+:root {
+  --pico-primary: #ec4899;
+  --pico-primary-background: #ec4899;
+  --pico-primary-border: #ec4899;
+
+  --pico-primary-hover: #db2777;
+  --pico-primary-hover-background: #db2777;
+  --pico-primary-hover-border: #db2777;
+
+  --pico-primary-focus: rgba(236, 72, 153, 0.35);
+  --pico-primary-inverse: #ffffff;
+
+  --pico-border-radius: 1rem;
+}
+
+html, body { min-height: 100vh; }
+
+/* -------------------------------------------
+   2) LIGHT THEME (strawberry milk)
+------------------------------------------- */
+html[data-theme="light"] {
+  --pico-background-color: #fff1f5;
+  --pico-card-background-color: #ffffff;
+  --pico-color: #831843;
+  --pico-muted-color: #9d174d;
+
+  --pico-border-color: #fbcfe8;
+  --pico-form-element-background-color: #ffffff;
+  --pico-form-element-border-color: #f9a8d4;
+  --pico-form-element-focus-color: rgba(236, 72, 153, 0.25);
+}
+
+html[data-theme="light"] body {
+  background: linear-gradient(180deg, #fff1f5, #ffe4e6);
+}
+
+/* -------------------------------------------
+   3) DARK THEME (berry) — force override
+------------------------------------------- */
+html[data-theme="dark"] {
+  --pico-background-color: #0b1020 !important;
+  --pico-card-background-color: #111827 !important;
+  --pico-color: #ffe4f0 !important;
+  --pico-muted-color: rgba(255, 228, 240, 0.78) !important;
+
+  --pico-border-color: rgba(236, 72, 153, 0.25) !important;
+  --pico-form-element-background-color: #0f172a !important;
+  --pico-form-element-border-color: rgba(236, 72, 153, 0.35) !important;
+  --pico-form-element-focus-color: rgba(236, 72, 153, 0.35) !important;
+}
+
+html[data-theme="dark"] body {
+  background: linear-gradient(180deg, #0b1020, #111827) !important;
+}
+
+/* -------------------------------------------
+   4) App styling
+------------------------------------------- */
+.app-header {
+  padding-top: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.page-title {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Todo card */
+.todo-card {
+  background: var(--pico-card-background-color);
+  border: 1px solid var(--pico-border-color);
+  border-radius: 1.25rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.todo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(236, 72, 153, 0.22);
+}
+
+.check-form { margin: 0; }
+
+.todo-text {
+  flex: 1;
+  font-size: 1.05rem;
+}
+
+.todo-text.done {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.icon-link {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+/* Forms */
+.add-section form,
+.edit-card form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+button,
+input[type="text"] {
+  border-radius: 999px;
+}
+
+/* checkbox accent */
+input[type="checkbox"] {
+  accent-color: var(--pico-primary);
+}
+
+.empty-state { opacity: 0.8; }
+
+.app-footer {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  opacity: 0.85;
+}
+html[data-theme="dark"] .todo-card { outline: 2px solid hotpink; }

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}My Todos{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">🌸 My Todos</h1>
+
+  <section>
+    {% for todo in todos %}
+      <div class="todo-card">
+        <form action="{{ url_for('check', index=loop.index0) }}" method="post" class="check-form">
+          <input
+            type="checkbox"
+            onchange="this.form.submit()"
+            {% if todo['done'] %}checked{% endif %}
+            aria-label="Mark todo done"
+          >
+        </form>
+
+        <span class="todo-text {% if todo['done'] %}done{% endif %}">
+          {{ todo['task'] }}
+        </span>
+
+        <div class="todo-actions">
+          <a href="{{ url_for('edit', index=loop.index0) }}" class="icon-link" aria-label="Edit">✏️</a>
+          <a href="{{ url_for('delete', index=loop.index0) }}" class="icon-link" aria-label="Delete">🗑️</a>
+        </div>
+      </div>
+    {% else %}
+      <p class="empty-state">No todos yet. Add something cute 💕</p>
+    {% endfor %}
+  </section>
+
+  <section class="add-section">
+    <form action="{{ url_for('add') }}" method="post">
+      <input type="text" name="todo" placeholder="Add a new task 💞" required>
+      <button type="submit">Add Todo</button>
+    </form>
+  </section>
+{% endblock %}

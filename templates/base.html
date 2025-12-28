@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="{{ theme|default('light') }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Todo App{% endblock %}</title>
+
+  <!-- Pico.css -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+
+  <!-- Your theme overrides -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+
+<body>
+  <header class="container app-header">
+    <nav>
+      <ul>
+        <li class="brand">🌸 Todo App</li>
+      </ul>
+      <ul>
+        <li>
+          <form action="{{ url_for('toggle_theme') }}" method="post" style="margin: 0;">
+            <button type="submit" class="secondary">
+              {% if theme == 'dark' %}☀️ Light{% else %}🌙 Dark{% endif %}
+            </button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="container app-footer">
+    <small>Made with Flask + Pico 🌸</small>
+  </footer>
+</body>
+</html>
