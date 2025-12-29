@@ -16,7 +16,13 @@
 <body>
 
   <main class="container">
-    {% block content %}{% endblock %}
+    {% block content %}
+      <h1 class="page-title">Warning</h1>
+      <section>
+        <p>{{ message }}</p>
+        <a href="{{ url_for('index') }}">Return to Todo List</a>
+      </section>
+    {% endblock %}
   </main>
 
 </body>
